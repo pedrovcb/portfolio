@@ -3,89 +3,138 @@ import SocialLinks from './SocialLinks.jsx'
 
 function PaperContent() {
   return (
-    <>
-      {/* Headline (não o do lollapalooza) */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-        <h1 style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 'normal', letterSpacing: '1px' }}>
-          Pedro Bedor
-        </h1>
-        <img
-          src="/images/cameraIcon.png"
-          alt=""
-          aria-hidden="true"
-          style={{ width: '20px', height: '20px' }}
-        />
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+
+      {/* COLUNA ESQUERDA — nome + câmera + divisor + tagline */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '8.5%',
+          left: '5%',
+          width: '42%',
+        }}
+      >
+        <div style={{ position: 'relative', fontSize: 'clamp(28px, 5vw, 48px)' }}>
+          {/* Nome 2 linhas */}
+          <h1 style={{ fontSize: '1em', fontWeight: 'normal', lineHeight: 1.30, margin: 0, marginTop : 7 }}>
+            <span style={{ display: 'block' , paddingLeft: '0.2em' }}>Pedro</span>
+            <span style={{ display: 'block', paddingLeft: '0.7em' }}>Bedor</span>
+          </h1>
+
+          {/* Ícone câmera+mão — escala em 'em' relativo ao font-size do h1 */}
+          <img
+            src="/images/cameraIcon.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '-0.6em',
+              left: '3.3em',
+              width: '2.3em',
+              height: '3em',
+              objectFit: 'contain',
+            }}
+          />
+
+          {/* Divisor — largura = 110% da coluna esquerda, não do papel inteiro */}
+          <hr
+            style={{
+              width: '110%',
+              border: 'none',
+              borderTop: '2px solid #b5a892',
+              margin: '0.2em 0 0.5em',
+            }}
+          />
+
+          {/* Tagline — alinhada à esquerda, dentro da coluna esquerda */}
+          <p
+            style={{
+              fontSize: '0.35em',
+              textAlign: 'center',
+              margin: 0,
+              marginLeft : '6%',
+              lineHeight: 1.4,
+            }}
+          >
+            A Caffeinated CS Student and Game Dev.
+          </p>
+        </div>
       </div>
 
-      {/* Foto e fitinhas nos cantos */}
-      <div style={{ position: 'relative', width: '140px', marginBottom: '16px', alignSelf: 'flex-end' }}>
-        <img
-          src="/images/pedroPhoto.jpg"
-          alt="Pedro Bedor"
-          style={{ width: '100%', borderRadius: '2px' }}
-        />
-        <img
-          src="/images/tapeCorner.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            top: '-10px',
-            left: '-8px',
-            width: '36px',
-            transform: 'rotate(-12deg)',
-            opacity: 0.85,
-          }}
-        />
-        <img
-          src="/images/tapeCorner.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            bottom: '-8px',
-            right: '-6px',
-            width: '36px',
-            transform: 'rotate(10deg)',
-            opacity: 0.85,
-          }}
-        />
+      {/* COLUNA DIREITA — foto + fitas */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '7%',
+          left: '56.5%',
+          width: '40%',
+        }}
+      >
+        <div style={{ position: 'relative' }}>
+          <img
+            src="/images/pedroPhoto.jpg"
+            alt="Pedro Bedor"
+            style={{ width: '100%', display: 'block', borderRadius: '2px' }}
+          />
+          <img
+            src="/images/tapeCorner.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '-8%',
+              left: '-8%',
+              width: '30%',
+              transform: 'rotate(-12deg)',
+              opacity: 0.85,
+            }}
+          />
+          <img
+            src="/images/tapeCorner.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '88%',
+              right: '-3%',
+              width: '25%',
+              transform: 'rotate(10deg)',
+              opacity: 0.85,
+            }}
+          />
+        </div>
       </div>
 
-      {/* Minibio */}
-      <p style={{ fontSize: '14px', textAlign: 'center', marginBottom: '8px', maxWidth: '300px' }}>
-        Computer Science Student and Game Developer.
-      </p>
-
-      {/* Divisor */}
-      <hr style={{ width: '80%', border: 'none', borderTop: '1px solid #b5a892', margin: '8px 0 20px' }} />
-
-      {/* Nav Cards */}
-      <div style={{ display: 'flex', gap: '16px', width: '100%', marginBottom: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <NavCard
-          number="01"
-          icon="/images/penIcon.png"
-          label="About Me"
-          href="/about"
-        />
-        <NavCard
-          number="02"
-          icon="/images/laptopIcon.png"
-          label="Projects"
-          href="/projects"
-        />
+      {/* NAV CARDS — 2 cards iguais, gap preciso */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '47.5%',
+          left: '3%',
+          width: '94%',
+          display: 'flex',
+          gap: '3%',
+        }}
+      >
+        <NavCard number="01" icon="/images/penIcon.png" label="About Me" href="/about" />
+        <NavCard number="02" icon="/images/laptopIcon.png" label="Projects" href="/projects" />
       </div>
 
-      {/* Links para Redes Sociais */}
-      <SocialLinks />
-
-      {/* Selos */}
-      <div style={{ display: 'flex', gap: '12px', marginTop: '20px', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-        <img src="/images/seloBrasil.png" alt="" style={{ width: '50px' }} />
-        <img src="/images/seloFall.png" alt="" style={{ width: '45px' }} />
-        <img src="/images/seloGato.png" alt="" style={{ width: '50px' }} />
+      {/* SOCIAL ROW — centralizado */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '80.5%',
+          left: '0',
+          right: '0',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <SocialLinks />
       </div>
-    </>
+
+    </div>
   )
 }
 
