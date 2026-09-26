@@ -37,7 +37,7 @@ function SocialLinks() {
           <img
             src={link.src}
             alt={link.alt}
-            style={{ width: '28px', height: '28px' }}
+            style={{ width: '35px', height: '35px' }}
           />
         </motion.a>
       ))}
