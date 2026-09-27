@@ -204,14 +204,10 @@ function SpotifyIpod() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '3px', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}
                 />
               ) : (
-                <div
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    borderRadius: '3px',
-                    boxShadow: '0 1px 4px rgba(0,0,0,0.2)',
-                  }}
+                <img
+                  src="/images/fallbackCover.png"
+                  alt=""
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '3px', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}
                 />
               )}
             </div>
@@ -223,6 +219,7 @@ function SpotifyIpod() {
                 padding: '4px 6px 4px 2px',
                 display: 'flex',
                 flexDirection: 'column',
+                alignSelf: 'center',
                 gap: '2px',
                 justifyContent: 'flex-start',
               }}
