@@ -1,4 +1,5 @@
 import TypewriterHero from '../components/home/TypewriterHero.jsx'
+import SpotifyIpod from '../components/home/SpotifyIpod.jsx'
 
 function HomePage() {
   return (
@@ -84,6 +85,7 @@ function HomePage() {
 </div>
 
       <TypewriterHero />
+      <SpotifyIpod />
     </div>
   )
 }
