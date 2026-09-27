@@ -328,7 +328,7 @@ function SpotifyIpod() {
               color: '#333',
             }}
           >
-            <span>{formatMs(spotifyData.progressMs)}</span>
+            <span style={{ minWidth: '2.6em', textAlign: 'right' }}>{formatMs(spotifyData.progressMs)}</span>
             <div
               style={{
                 flex: 1,
