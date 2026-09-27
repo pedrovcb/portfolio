@@ -44,6 +44,70 @@ function MarqueeText({ text, style: baseStyle }) {
   )
 }
 
+function AlbumCover({ imageUrl }) {
+  const prevUrlRef = useRef(null)
+  const [animating, setAnimating] = useState(false)
+  const [oldUrl, setOldUrl] = useState(null)
+
+  const src = imageUrl || '/images/fallbackCover.png'
+
+  useEffect(() => {
+    if (src !== prevUrlRef.current && !animating) {
+      if (prevUrlRef.current !== null) {
+        setOldUrl(prevUrlRef.current)
+        setAnimating(true)
+      }
+      prevUrlRef.current = src
+    }
+  }, [src, animating])
+
+  const handleAnimationEnd = () => {
+    setAnimating(false)
+    setOldUrl(null)
+  }
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+      <img
+        src={src}
+        alt=""
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          borderRadius: '3px',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.2)',
+          ...(animating ? {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            animation: 'album-slide-in 400ms ease-in-out forwards',
+          } : {}),
+        }}
+      />
+      {animating && oldUrl && (
+        <img
+          src={oldUrl}
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '3px',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.2)',
+            animation: 'album-slide-out 400ms ease-in-out forwards',
+          }}
+          onAnimationEnd={handleAnimationEnd}
+        />
+      )}
+    </div>
+  )
+}
+
 function SpotifyIpod() {
   const [spotifyData, setSpotifyData] = useState({
     isPlaying: false,
@@ -62,6 +126,14 @@ function SpotifyIpod() {
       @keyframes marquee-scroll {
         0%, 15% { transform: translateX(0) }
         85%, 100% { transform: translateX(-50%) }
+      }
+      @keyframes album-slide-in {
+        0% { transform: translateX(100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes album-slide-out {
+        0% { transform: translateX(0); opacity: 1; }
+        100% { transform: translateX(-100%); opacity: 0; }
       }
     `
     document.head.appendChild(style)
@@ -197,19 +269,7 @@ function SpotifyIpod() {
                 justifyContent: 'center',
               }}
             >
-              {spotifyData.albumImageUrl ? (
-                <img
-                  src={spotifyData.albumImageUrl}
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '3px', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}
-                />
-              ) : (
-                <img
-                  src="/images/fallbackCover.png"
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '3px', boxShadow: '0 1px 4px rgba(0,0,0,0.2)' }}
-                />
-              )}
+              <AlbumCover imageUrl={spotifyData.albumImageUrl} />
             </div>
 
             {/* Informações da música na direita */}
