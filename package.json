@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@playhtml/react": "^3.0.0",
     "framer-motion": "^13.4.4",
+    "playhtml": "^2.15.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.18.4"
