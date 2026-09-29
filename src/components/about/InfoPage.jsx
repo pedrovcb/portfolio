@@ -75,7 +75,7 @@ function InfoPage() {
           overflow: 'hidden',
         }}
       >
-        Computer Science undergraduate at CESAR School, with hands-on experience in Game Design as General and Creative Director of the Ismália project (FORJA Game Studio). Serving as a teaching assistant for the NExT Database program and as an educator in workshops on applying Game Design in no-code projects. Currently has 4 papers published at the 2026 Brazilian Symposium on Games and Digital Entertainment (SBGames).
+        Computer Science undergraduate at CESAR School, with hands-on experience in Game Design as Game Director (Ismália - FORJA Game Studio). Currently has 4 papers published at the 2026 Brazilian Symposium on Games and Digital Entertainment (SBGames).
       </p>
 
       <h2
